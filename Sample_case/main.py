@@ -18,7 +18,7 @@ import pickle
 import matplotlib.pyplot as plt
 
 #Own function and class
-from Create_LG_IC import LG_tempo
+import Create_IC
 import Report
 import User
 
@@ -47,7 +47,7 @@ dict_algorithm['name_folder'] = dict_algorithm['template_simulation_name']+str(i
 #Initial conditions
 #-------------------------------------------------------------------------------
 
-LG_tempo(dict_algorithm, dict_geometry, dict_ic, dict_material, dict_sample, dict_sollicitations, simulation_report)
+Create_IC.LG_tempo(dict_algorithm, dict_geometry, dict_ic, dict_material, dict_sample, dict_sollicitations, simulation_report)
 
 #save
 outfile = open('ICs/'+str(dict_geometry['grain_discretisation'])+'/'+dict_algorithm['name_folder']+'_dict_ic','wb')
@@ -77,4 +77,3 @@ plt.title("k0")
 
 
 plt.savefig('Trackers.png')
-

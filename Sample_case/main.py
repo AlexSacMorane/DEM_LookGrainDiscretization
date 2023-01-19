@@ -91,6 +91,11 @@ for grain_discretization in grain_discretization_L :
     outfile = open('ICs/'+str(grain_discretization)+'/'+dict_algorithm['name_folder']+'_dict_ic','wb')
     pickle.dump(dict_ic_discrete,outfile)
     outfile.close()
+    
+    #Interface user
+    print()
+    print('Loading discretization '+str(grain_discretization)+' done')
+    print()
 
 #close plot
 plt.subplot(221)

@@ -34,9 +34,6 @@ def All_parameters():
     #---------------------------------------------------------------------------
     #Geometric parameters
 
-    #approximatively the number of vertices for one grain during DEM simulation
-    grain_discretisation = 40 # = grain_discretisation_square
-
     N_grain = 300 #total number of grains
 
     #Disk
@@ -57,8 +54,7 @@ def All_parameters():
     'N_grain_disk' : N_grain_disk,
     'R_mean' : R_mean,
     'L_R' : L_R,
-    'L_percentage_R' : L_percentage_R,
-    'grain_discretisation' : grain_discretisation
+    'L_percentage_R' : L_percentage_R
     }
 
     #---------------------------------------------------------------------------
@@ -189,7 +185,7 @@ def All_parameters():
     N_test_max = 5000 # maximum number of tries to generate a grain without overlap
     i_DEM_stop_IC = 4000 #stop criteria for DEM during IC
     Debug_DEM_IC = False #plot configuration inside DEM during IC
-    i_print_plot_IC = 100 #frenquency of the print and plot (if Debug_DEM_IC) for IC
+    i_print_plot_IC = 400 #frenquency of the print and plot (if Debug_DEM_IC) for IC
     dt_DEM_IC = dt_DEM_crit/6 #s time step during IC
     Ecin_ratio_IC = 0.0005
     factor_neighborhood_IC = 1.5 #margin to detect a grain into a neighborhood

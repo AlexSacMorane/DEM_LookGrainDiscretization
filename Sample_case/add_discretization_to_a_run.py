@@ -29,7 +29,7 @@ import User
 #-------------------------------------------------------------------------------
 
 grain_discretization = 60 #new discretization to compute
-name_run = 'Run_1' #name of the compute to rework
+name_run = 'Run_7' #name of the compute to rework
 
 #-------------------------------------------------------------------------------
 #Plan simulation
@@ -43,6 +43,9 @@ simulation_report = Report.Report('Report',datetime.now())
 #Main
 #-------------------------------------------------------------------------------
 
+#get data
+dict_algorithm, dict_geometry, dict_ic, dict_material, dict_sample, dict_sollicitations = User.All_parameters()
+
 #load perfect sphere data
 infile = open('ICs/'+name_run+'_dict_ic','rb')
 dict_ic = pickle.load(infile,encoding ='byte')
@@ -50,6 +53,14 @@ infile.close()
 
 #convert into discrete grains
 dict_ic_discrete = Create_IC_Polygonal.Discretize_Grains(dict_ic, grain_discretization)
+
+#find the maximum y (center+radius)
+y_max = dict_sample['y_box_min']
+for grain in dict_ic['L_g_tempo']:
+    if grain.center[1] + grain.radius > y_max:
+        y_max = grain.center[1] + grain.radius
+#add element in dict
+dict_sample['y_box_max'] = y_max
 
 #load discrete grains
 Create_IC_Polygonal.DEM_loading(dict_algorithm, dict_ic_discrete, dict_material, dict_sample, dict_sollicitations, simulation_report)

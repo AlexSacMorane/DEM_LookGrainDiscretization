@@ -65,7 +65,6 @@ plt.figure(1,figsize=(16,9))
 for grain_discretization in grain_discretization_L :
     dict_geometry['grain_discretization'] = grain_discretization
 
-
     #load perfect sphere data
     infile = open('ICs/'+dict_algorithm['name_folder']+'_dict_ic','rb')
     dict_ic = pickle.load(infile,encoding ='byte')
@@ -91,7 +90,7 @@ for grain_discretization in grain_discretization_L :
     outfile = open('ICs/'+str(grain_discretization)+'/'+dict_algorithm['name_folder']+'_dict_ic','wb')
     pickle.dump(dict_ic_discrete,outfile)
     outfile.close()
-    
+
     #Interface user
     print()
     print('Loading discretization '+str(grain_discretization)+' done')
